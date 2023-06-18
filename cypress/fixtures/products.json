@@ -1,5 +1,5 @@
 {
-    "SauceLabsBackpack" : "sauce-labs-backpack",
+    "SauceLabsBackpackLocator" : "sauce-labs-backpack",
     "SauceLabsBikeLightLocator" : "sauce-labs-bike-light",
     "SauceLabsBikeLightText" : "Sauce Labs Bike Light"
 }

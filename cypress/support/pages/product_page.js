@@ -1,5 +1,7 @@
 class productPage {
   elements = {
+    productPageTitle: () => cy.get(".title"),
+
     addToCartButton: (productName) => cy.get(`#add-to-cart-${productName}`),
 
     removeFromCartButton: (productName) => cy.get(`#remove-${productName}`),
@@ -19,9 +21,13 @@ class productPage {
     });
   }
 
-  verifyProductIsaddedToCart() {
-    this.elements.shoppingCartIcon().should("have.text", "1");
+  verifyProductIsaddedToCart(noOfProducts) {
+    this.elements.shoppingCartIcon().should("have.text", noOfProducts);
   }
+
+  // verifyMultipleProductsIsAddedToCart(noOfProducts){
+  //   this.elements.shoppingCartIcon().should("have.text",noOfProducts);
+  // }
 
   removeProduct(productName) {
     this.elements.removeFromCartButton(productName).click();
@@ -33,6 +39,10 @@ class productPage {
 
   viewCart() {
     this.elements.shoppingCartIcon().click();
+  }
+
+  verifyProductPageRedirection() {
+    this.elements.productPageTitle().should("have.text", "Products");
   }
 }
 

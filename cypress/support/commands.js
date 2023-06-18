@@ -12,7 +12,7 @@
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
 Cypress.Commands.add("loginToSauceDemo", (email, password) => {
-  cy.visit("https://www.saucedemo.com/", { failOnStatusCode: false });
+  cy.visit("/", { failOnStatusCode: false });
   cy.get("#user-name").type(email);
   cy.get("#password").type(password);
   cy.get("#login-button").click();

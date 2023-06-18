@@ -11,6 +11,10 @@ class cartPage {
     this.elements.getTitle().should("have.text", "Your Cart");
   }
 
+  ValidateCartIsNotOpened() {
+    this.elements.getTitle().should("not.exist");
+  }
+
   removeItemFromCart(productName) {
     this.elements.removeItemButton(productName).click();
   }

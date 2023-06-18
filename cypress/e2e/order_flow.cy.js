@@ -3,7 +3,7 @@ import cartPage from "../support/pages/cart_page";
 import checkoutPage from "../support/pages/checkout_page";
 import overviewPage from "../support/pages/overview_page";
 import completePage from "../support/pages/complete_page";
-describe("Login", () => {
+describe("Ordering products test cases", () => {
   //const productPage = new ProductsPage();
   before(() => {
     cy.fixture("example.json").then((data) => {
@@ -18,13 +18,31 @@ describe("Login", () => {
 
   beforeEach(() => {
     cy.loginToSauceDemo(data.email, data.password);
-    productPage.selectProduct(products.SauceLabsBikeLightLocator);
-    productPage.viewCart();
-    cartPage.validateCartIsOpenedSuccessfully();
-    //productPage.verifyProductIsaddedToCart();
   });
 
-  it("Order single product", () => {
+  it("Order with no products in cart", () => {
+    productPage.verifyProductIsaddedToCart("");
+  });
+
+  it("Order single product ", () => {
+    productPage.selectProduct(products.SauceLabsBikeLightLocator);
+    productPage.verifyProductIsaddedToCart(1);
+  });
+
+  it("Order 2 products", () => {
+    productPage.selectProduct(products.SauceLabsBikeLightLocator);
+    productPage.selectProduct(products.SauceLabsBackpackLocator);
+    productPage.verifyProductIsaddedToCart(2);
+  });
+
+  it("Order all products", () => {
+    productPage.selectAllProducts();
+    productPage.verifyProductIsaddedToCart(6);
+  });
+
+  afterEach(() => {
+    productPage.viewCart();
+    cartPage.validateCartIsOpenedSuccessfully();
     cartPage.clickOnCheckoutButton();
     checkoutPage.verifyRedirectionToCheckoutPage();
     checkoutPage.typeInfo();
@@ -32,14 +50,7 @@ describe("Login", () => {
     overviewPage.verifyOverviewPageAppears();
     overviewPage.clickOnFinishButton();
     completePage.verifyOrderIsCompleted();
+    completePage.clickBackToHomeButton();
+    productPage.verifyProductPageRedirection();
   });
-
-  // it("Select a product", () => {
-  //   productPage.selectProduct(products.SauceLabsBikeLight);
-  //   productPage.verifyProductIsaddedToCart();
-  // });
-
-  // it("Select all products", () => {
-  //   productPage.selectAllProducts();
-  // });
 });

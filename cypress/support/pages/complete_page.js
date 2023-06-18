@@ -1,7 +1,7 @@
 class completePage {
   elements = {
     successMessage: () => cy.get(".complete-header"),
-    backToHomeButton: () => cy.get("back-to-products"),
+    backToHomeButton: () => cy.get("#back-to-products"),
   };
 
   verifyOrderIsCompleted() {
