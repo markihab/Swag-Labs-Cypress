@@ -6,14 +6,14 @@ import completePage from "../support/pages/complete_page";
 describe("Ordering products test cases", () => {
   //const productPage = new ProductsPage();
   before(() => {
-    cy.fixture("example.json").then((data) => {
-      //this.data = data;
-      globalThis.data = data;
-    });
-    cy.fixture("products.json").then((products) => {
-      //this.data = data;
-      globalThis.products = products;
-    });
+    cy.fixture("example.json")
+      .then((data) => {
+        globalThis.data = data;
+        return cy.fixture("products.json");
+      })
+      .then((products) => {
+        globalThis.products = products;
+      });
   });
 
   beforeEach(() => {
