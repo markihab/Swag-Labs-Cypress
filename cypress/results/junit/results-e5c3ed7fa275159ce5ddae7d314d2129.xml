@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="6.500" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2023-06-18T20:25:38" tests="0" file="cypress\e2e\order_flow.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Ordering products test cases" timestamp="2023-06-18T20:25:38" tests="2" time="6.476" failures="0">
+    <testcase name="Ordering products test cases Order with no products in cart" time="2.820" classname="Order with no products in cart">
+    </testcase>
+    <testcase name="Ordering products test cases Order single product " time="1.041" classname="Order single product ">
+    </testcase>
+  </testsuite>
+</testsuites>

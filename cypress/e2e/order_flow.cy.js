@@ -24,15 +24,15 @@ describe("Ordering products test cases", () => {
     productPage.verifyProductIsaddedToCart("");
   });
 
-  it("Order single product ", () => {
-    productPage.selectProduct(products.SauceLabsBikeLightLocator);
-    productPage.verifyProductIsaddedToCart(1);
-  });
-
   it("Order 2 products", () => {
     productPage.selectProduct(products.SauceLabsBikeLightLocator);
     productPage.selectProduct(products.SauceLabsBackpackLocator);
     productPage.verifyProductIsaddedToCart(2);
+  });
+
+  it("Order single product ", () => {
+    productPage.selectProduct(products.SauceLabsBikeLightLocator);
+    productPage.verifyProductIsaddedToCart(1);
   });
 
   it("Order all products", () => {
